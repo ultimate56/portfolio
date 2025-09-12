@@ -1,10 +1,10 @@
 import React from "react";
-import { Skiper58 } from "./Components/AnimatedText";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
     <div>
-      <Skiper58 />
+      <Home />
     </div>
   );
 };
