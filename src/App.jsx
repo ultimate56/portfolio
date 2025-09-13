@@ -1,14 +1,14 @@
 import React from "react";
-import Home from "./pages/Home";
+import { BrowserRouter } from "react-router-dom";
 import CursorDot from "./Components/Cursor";
-import NavBar from "./Components/NavBar";
+import Routes from "./routes/Routes"; // Updated import path
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <CursorDot />
-      <Home />
-    </div>
+      <Routes />
+    </BrowserRouter>
   );
 };
 
