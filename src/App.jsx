@@ -1,10 +1,13 @@
 import React from "react";
-import { Skiper58 } from "./Components/AnimatedText";
+
+import About from "./pages/About";
 
 const App = () => {
   return (
     <div>
-      <Skiper58 />
+      
+
+      <About/>
     </div>
   );
 };
