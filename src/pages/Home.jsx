@@ -72,7 +72,7 @@ const Home = () => {
       <div className="flex justify-center items-center h-screen relative z-10">
         <div className="text-center px-4">
           <h1 className="text-6xl font-serif">
-            Hey, I'm Charles Bruyerre <br /> I am a full stack web developer.
+            Hey, I'm Elizabeth Olsen <br /> I am a full stack web developer.
           </h1>
           <h3 className="mt-6 text-lg">
             I'm a graphic designer, UX/UI designer & <br />
