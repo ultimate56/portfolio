@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { Link } from "react-router-dom"; // Import Link
 
 const Contact = () => {
   const containerRef = useRef(null);
@@ -64,9 +65,8 @@ const Contact = () => {
       );
   }, []);
 
-  // Handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
 
     const formData = {
       name: e.target.name.value,
@@ -219,24 +219,25 @@ const Contact = () => {
               <div className="flex flex-col space-y-2">
                 <h3 className="text-lg font-medium text-black">Social Media</h3>
                 <div className="flex space-x-4">
-                  <a
-                    href="#"
+                  {/* Use Link for internal pages, keep a tags for external */}
+                  <Link
+                    to="/linkedin"
                     className="text-black/70 hover:text-black transition-colors"
                   >
                     LinkedIn
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/github"
                     className="text-black/70 hover:text-black transition-colors"
                   >
                     GitHub
-                  </a>
-                  <a
-                    href="#"
+                  </Link>
+                  <Link
+                    to="/twitter"
                     className="text-black/70 hover:text-black transition-colors"
                   >
                     Twitter
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
