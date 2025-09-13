@@ -135,7 +135,7 @@ const Contact = () => {
                   id="email"
                   name="email"
                   className="w-full px-4 py-3 bg-white/60 border border-black/20 rounded-lg focus:outline-none focus:border-black/50 transition-colors text-black placeholder-black/50"
-                  placeholder="your@email.com"
+                  placeholder="elizabeth@gmail.com"
                 />
               </div>
 
@@ -190,10 +190,10 @@ const Contact = () => {
               <div className="flex flex-col space-y-2">
                 <h3 className="text-lg font-medium text-black">Email</h3>
                 <a
-                  href="mailto:hello@charlesbruyerre.com"
+                  href="mailto:elizabeth@gmail.com"
                   className="text-black/70 hover:text-black transition-colors"
                 >
-                  hello@charlesbruyerre.com
+                  elizabeth@gmail.com
                 </a>
               </div>
 
