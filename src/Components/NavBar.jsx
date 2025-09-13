@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
-const NavBar = ({ isVisible }) => {
+const NavBar = ({ isVisible, onLinkClick }) => {
   const navItemsRef = useRef([]);
   const containerRef = useRef(null);
 
@@ -47,6 +47,12 @@ const NavBar = ({ isVisible }) => {
     }
   }, [isVisible]);
 
+  const handleLinkClick = () => {
+    if (onLinkClick) {
+      onLinkClick(); // Close the navbar overlay
+    }
+  };
+
   return (
     <nav
       ref={containerRef}
@@ -57,6 +63,7 @@ const NavBar = ({ isVisible }) => {
         <li ref={addToRefs}>
           <Link
             to="/"
+            onClick={handleLinkClick}
             aria-label="Go to Home section"
             className="text-white text-5xl md:text-6xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
           >
@@ -67,6 +74,7 @@ const NavBar = ({ isVisible }) => {
         <li ref={addToRefs}>
           <Link
             to="/about"
+            onClick={handleLinkClick}
             aria-label="Go to About section"
             className="text-white text-5xl md:text-6xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
           >
@@ -77,6 +85,7 @@ const NavBar = ({ isVisible }) => {
         <li ref={addToRefs}>
           <Link
             to="/projects"
+            onClick={handleLinkClick}
             aria-label="Go to Projects section"
             className="text-white text-5xl md:text-6xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
           >
@@ -88,6 +97,7 @@ const NavBar = ({ isVisible }) => {
         <li ref={addToRefs}>
           <Link
             to="/contact"
+            onClick={handleLinkClick}
             aria-label="Go to Contact section"
             className="text-white text-5xl md:text-6xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
           >

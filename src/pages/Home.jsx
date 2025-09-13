@@ -52,6 +52,10 @@ const Home = () => {
     }
   }, [isOpen]);
 
+  const handleLinkClick = () => {
+    setIsOpen(false); // Close the navbar overlay when a link is clicked
+  };
+
   return (
     <div className="bg-[#ECE7E1] min-h-screen w-full relative overflow-hidden">
       {/* Hamburger button */}
@@ -95,7 +99,7 @@ const Home = () => {
 
         {/* NavBar */}
         <div className="flex-1 flex items-center justify-center">
-          <NavBar isVisible={isOpen} />
+          <NavBar isVisible={isOpen} onLinkClick={handleLinkClick} />
         </div>
       </div>
     </div>
