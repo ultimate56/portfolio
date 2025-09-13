@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import profile from "../assets/images/profile.jpg";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // Fixed import
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +27,7 @@ const About = () => {
     );
 
     // Animate content sections on scroll
-    sectionsRef.current.forEach((section, index) => {
+    sectionsRef.current.forEach((section) => {
       gsap.fromTo(
         section,
         { opacity: 0, y: 50 },
@@ -230,7 +230,7 @@ const About = () => {
           </p>
         </div>
 
-        {/* Contact CTA */}
+        {/* Contact CTA + Resume Button */}
         <div ref={addToSectionRefs} className="mb-8">
           <h2 className="text-3xl font-serif text-black mb-6">
             Let's Collaborate
@@ -241,12 +241,24 @@ const About = () => {
             just exchanging ideas, I’d love to connect and make something
             meaningful together.
           </p>
-          <Link
-            to="/Contact"
-            className="inline-block bg-black text-[#ECE7E1] px-8 py-4 rounded-lg font-medium hover:bg-black/80 transition-colors duration-300"
-          >
-            Get In Touch
-          </Link>
+
+          <div className="flex flex-wrap gap-4">
+            <Link
+              to="/Contact"
+              className="inline-block bg-black text-[#ECE7E1] px-8 py-4 rounded-lg font-medium hover:bg-black/80 transition-colors duration-300"
+            >
+              Get In Touch
+            </Link>
+
+            <a
+              href="/resume.pdf" // Place your fake resume here
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-gray-800 text-[#ECE7E1] px-8 py-4 rounded-lg font-medium hover:bg-gray-700 transition-colors duration-300"
+            >
+              Get Full Resume
+            </a>
+          </div>
         </div>
       </div>
     </div>
