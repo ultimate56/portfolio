@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 
-const NavBar = () => {
+const NavBar = ({ isVisible }) => {
   const navItemsRef = useRef([]);
   const containerRef = useRef(null);
 
@@ -13,23 +13,27 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    // Reset refs on mount to avoid duplicates
-    navItemsRef.current = [];
+    // Only animate when becoming visible
+    if (isVisible) {
+      // Reset refs on mount to avoid duplicates
+      navItemsRef.current = [];
 
-    const tl = gsap.timeline();
+      // Set initial states
+      gsap.set(containerRef.current, { opacity: 0 });
+      gsap.set(navItemsRef.current, { opacity: 0, y: 50 });
 
-    // Fade in the container (overlay already slides in from Home.jsx)
-    tl.fromTo(
-      containerRef.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.6, ease: "power3.out" }
-    );
+      const tl = gsap.timeline({ delay: 0.3 }); // Small delay to let overlay slide in
 
-    // Animate nav items one by one
-    if (navItemsRef.current.length > 0) {
-      tl.fromTo(
+      // Fade in the container
+      tl.to(containerRef.current, {
+        opacity: 1,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+
+      // Animate nav items one by one
+      tl.to(
         navItemsRef.current,
-        { opacity: 0, y: 50 },
         {
           opacity: 1,
           y: 0,
@@ -40,12 +44,12 @@ const NavBar = () => {
         "-=0.3" // overlap with container fade
       );
     }
-  }, []);
+  }, [isVisible]);
 
   return (
     <nav
       ref={containerRef}
-      className="fixed top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-black"
+      className="w-full h-full flex flex-col justify-center items-center"
     >
       {/* Navigation Links */}
       <ul className="space-y-10">

@@ -7,14 +7,13 @@ import NavBar from "../Components/NavBar";
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const overlayRef = useRef(null);
-  const navRef = useRef(null);
   const closeButtonRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
       // Start hidden
       gsap.set(overlayRef.current, { x: "100%" });
-      gsap.set([navRef.current, closeButtonRef.current], {
+      gsap.set(closeButtonRef.current, {
         opacity: 0,
         y: -20,
       });
@@ -24,30 +23,19 @@ const Home = () => {
         x: "0%",
         duration: 0.6,
         ease: "power3.out",
-      })
-        .to(
-          closeButtonRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          "-=0.2"
-        )
-        .to(
-          navRef.current,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          "-=0.2"
-        );
-    } else {
+      }).to(
+        closeButtonRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
+    } else if (overlayRef.current) {
       const tl = gsap.timeline();
-      tl.to([navRef.current, closeButtonRef.current], {
+      tl.to(closeButtonRef.current, {
         opacity: 0,
         y: -20,
         duration: 0.3,
@@ -92,25 +80,22 @@ const Home = () => {
       {/* Overlay */}
       <div
         ref={overlayRef}
-        className={`fixed top-0 left-0 w-full h-full z-40 bg-black/80 backdrop-blur-sm flex flex-col ${
-          isOpen ? "block" : "hidden"
-        }`} // HIDE when closed
+        className="fixed top-0 left-0 w-full h-full z-40 bg-black/80 backdrop-blur-sm flex flex-col"
+        style={{ transform: "translateX(100%)" }}
       >
         {/* Close button */}
         <div
           ref={closeButtonRef}
-          className="absolute top-6 right-6 text-3xl cursor-pointer text-white opacity-0 transition-transform hover:scale-110 hover:rotate-90 duration-300"
+          className="absolute top-6 right-6 text-3xl cursor-pointer text-white transition-transform hover:scale-110 hover:rotate-90 duration-300 z-50"
           onClick={() => setIsOpen(false)}
+          style={{ opacity: 0 }}
         >
           <IoClose />
         </div>
 
         {/* NavBar */}
-        <div
-          ref={navRef}
-          className="flex-1 flex items-center justify-center opacity-0"
-        >
-          <NavBar />
+        <div className="flex-1 flex items-center justify-center">
+          <NavBar isVisible={isOpen} />
         </div>
       </div>
     </div>
