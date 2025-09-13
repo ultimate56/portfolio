@@ -73,7 +73,7 @@ const NavBar = ({ isVisible = false, onLinkClick }) => {
 
       {/* Footer */}
       <div ref={addToRefs} className="mt-16 text-gray-400 text-lg">
-        <p>hello@charlesbruyerre.com</p>
+        <p>Getinthecarelizabeth@gmail.com</p>
       </div>
     </nav>
   );
