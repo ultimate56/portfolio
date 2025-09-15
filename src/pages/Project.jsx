@@ -27,7 +27,7 @@ const Projects = () => {
     gsap.set(projectsRef.current, {
       opacity: 0,
       y: 60,
-      scale: 0.9,
+      scale: 0.3,
     });
 
     // Animate elements in sequence

@@ -53,7 +53,7 @@ const CursorDot = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-50">
+    <div className="fixed inset-0 pointer-events-none z-100">
       <div
         ref={dotRef}
         className="absolute w-2 h-2 p-2 bg-red-400 border-white rounded-full transform -translate-x-1/2 -translate-y-1/2"
