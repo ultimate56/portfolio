@@ -1,3 +1,4 @@
+import gsap from "gsap";
 import React, { useRef, useEffect } from "react";
 
 const CursorDot = () => {
