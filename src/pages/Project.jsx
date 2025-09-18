@@ -10,9 +10,9 @@ const Projects = () => {
   const filterRef = useRef(null);
 
   // Add refs to array safely
-  const addToProjectRefs = (el) => {
-    if (el && !projectsRef.current.includes(el)) {
-      projectsRef.current.push(el);
+  const addToProjectRefs = (element) => {
+    if (element && !projectsRef.current.includes(element)) {
+      projectsRef.current.push(element);
     }
   };
 
@@ -82,7 +82,7 @@ const Projects = () => {
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       category: "Web Development",
       year: "2024",
-      slug: "e-commerce-platform",
+      slug: "https://www.google.com/",
     },
     {
       id: 2,
@@ -171,7 +171,7 @@ const Projects = () => {
         </div>
 
         {/* Filter Section */}
-        <div ref={filterRef} className="flex justify-center mb-12">
+        {/* <div ref={filterRef} className="flex justify-center mb-12">
           <div className="flex flex-wrap gap-4">
             {["All", "Web Development", "Design", "UI/UX Design"].map(
               (filter) => (
@@ -184,7 +184,7 @@ const Projects = () => {
               )
             )}
           </div>
-        </div>
+        </div> */}
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -238,8 +238,9 @@ const Projects = () => {
                 </div>
 
                 {/* View Project Link */}
-                <Link
-                  to={`/projects/${project.slug}`}
+                <a
+                  href={`${project.slug}`}
+                  target="_blank"
                   className="inline-flex items-center text-black font-medium group-hover:text-black/80 transition-colors"
                 >
                   View Project
@@ -256,7 +257,7 @@ const Projects = () => {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
-                </Link>
+                </a>
               </div>
             </div>
           ))}
