@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
       <VerticalNavBar />
 
       {/* Mobile/Tablet nav with hamburger + overlay (hidden on lg+) */}
-      <div className="lg:hidden">
+      <div className="lg:hidden md:hidden">
         {/* Hamburger button */}
         {!isOpen && (
           <div

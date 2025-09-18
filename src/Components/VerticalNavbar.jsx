@@ -10,7 +10,7 @@ const VerticalNavBar = () => {
   ];
 
   return (
-    <nav className="hidden lg:flex fixed top-1/2 left-0 transform -translate-y-1/2 w-24 flex-col justify-center gap-10 h-full ps-8 space-x-20 items-start bg-[#ECE7E1] z-20">
+    <nav className="hidden md:flex lg:flex fixed top-1/2 left-0 transform -translate-y-1/2 w-24 flex-col justify-center gap-10 h-full ps-8 space-x-20 items-start bg-[#ECE7E1] z-20">
       <div className="mb-8">
         <Link
           to="/"
