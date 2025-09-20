@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 
@@ -15,6 +15,9 @@ const NavBar = ({ isVisible = false, onLinkClick }) => {
   // GSAP animation
   useEffect(() => {
     if (isVisible) {
+      // Ensure refs are fresh
+      navItemsRef.current = navItemsRef.current.filter(Boolean);
+
       // Set initial states
       gsap.set(containerRef.current, { opacity: 0 });
       gsap.set(navItemsRef.current, { opacity: 0, y: 50 });
@@ -57,18 +60,21 @@ const NavBar = ({ isVisible = false, onLinkClick }) => {
       className="md:hidden w-full h-full flex flex-col justify-center items-center"
     >
       <ul className="space-y-10 text-center">
-        {links.map((link, idx) => (
-          <li key={idx} ref={addToRefs}>
-            <Link
-              to={link.path}
-              onClick={onLinkClick}
-              className="text-white text-5xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
-            >
-              {link.name}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          </li>
-        ))}
+        {(() => {
+          navItemsRef.current = []; // reset before mapping
+          return links.map((link, idx) => (
+            <li key={idx} ref={addToRefs}>
+              <Link
+                to={link.path}
+                onClick={onLinkClick}
+                className="text-white text-5xl font-light tracking-wide hover:text-gray-400 transition-colors duration-300 relative group"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+              </Link>
+            </li>
+          ));
+        })()}
       </ul>
 
       {/* Footer */}

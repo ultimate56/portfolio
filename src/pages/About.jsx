@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import profile from "../../public/profile.jpg";
+import profile from "../assets/profile.jpg"; // Ensure you have a profile.jpg in the public folder
 import { Link } from "react-router-dom";
 
 // Register ScrollTrigger plugin
